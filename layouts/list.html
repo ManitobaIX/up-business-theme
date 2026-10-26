@@ -19,6 +19,11 @@
             </div>
             <div class="p-6">
               <h5 class="text-primary mb-2 text-xl font-semibold">{{ .Title }}</h5>
+              {{ if and (eq .Section "posts") (not .Date.IsZero) }}
+                <time class="text-primary/70 mb-3 block text-sm" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "January 2, 2006" }}
+                </time>
+              {{ end }}
               <p class="">{{ .Summary | plainify }}</p>
             </div>
           </a>

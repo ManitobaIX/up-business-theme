@@ -4,6 +4,11 @@
       {{ with .Title }}
         <h2 class="text-primary mb-16 text-center text-6xl font-bold">{{ . }}</h2>
       {{ end }}
+      {{ if and (eq .Section "posts") (not .Date.IsZero) }}
+        <time class="text-primary/70 mb-8 block text-center text-sm" datetime="{{ .Date.Format "2006-01-02" }}">
+          Published {{ .Date.Format "January 2, 2006" }}
+        </time>
+      {{ end }}
       {{ with .Params.description }}
         <p class="mx-auto mb-16 text-center xl:max-w-[50%]">{{ . }}</p>
       {{ end }}
