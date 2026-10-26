@@ -50,7 +50,7 @@
         <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">Locations</h2>
         <ul class="flex flex-col gap-3 text-sm">
           {{ range hugo.Data.locations }}
-            <li class="flex flex-col items-center gap-4 xl:flex-row">
+            <li class="flex items-center justify-center gap-3 xl:justify-start">
               <span class="text-primary">{{ partial "icons/geo-alt.html" }}</span>
               <span class="text-center xl:text-start">
                 {{ with .peeringdb }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .peeringdb }}</a>{{ end }}
