@@ -6,11 +6,6 @@
     {{ with .text }}
       <p class="mx-auto mb-8 text-center xl:max-w-[50%]">{{ . }}</p>
     {{ end }}
-    {{ with .image }}
-      <div class="mb-10 flex justify-center">
-        {{ partial "utilities/image" (dict "src" . "class" "max-w-xs") }}
-      </div>
-    {{ end }}
     {{ if .cards }}
       <div class="grid gap-8 xl:grid-cols-3">
         {{ range .cards }}
