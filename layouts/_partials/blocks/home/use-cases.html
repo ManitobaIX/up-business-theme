@@ -17,9 +17,17 @@
         {{ with .organization }}
           <p class="text-secondary mb-4 text-center font-bold">{{ . }}</p>
         {{ end }}
-        {{ with .summary }}
-          <p class="mb-6 text-center">{{ . }}</p>
-        {{ end }}
+        <div class="mb-6">
+          <div class="mb-4 flex items-center justify-start">
+            {{ partial "utilities/image" (dict "src" "images/testimonials-left-quote.png" "class" "size-8") }}
+          </div>
+          {{ with .summary }}
+            <p class="text-center">{{ . }}</p>
+          {{ end }}
+          <div class="mt-4 flex items-center justify-end">
+            {{ partial "utilities/image" (dict "src" "images/testimonials-right-quote.png" "class" "size-8") }}
+          </div>
+        </div>
         {{ with .pdf }}
           <div class="flex justify-center">
             <a
@@ -36,14 +44,18 @@
 
     {{ with .items }}
       <div class="grid gap-8 xl:grid-cols-3">
-        {{ range . }}
+        {{ range $i, $useCase := . }}
           <article class="flex flex-col rounded p-8 shadow-xl">
             {{ with .image }}
               {{ partial "utilities/image.html" (dict "src" . "class" "mb-6 object-center object-contain") }}
             {{ end }}
-            {{ with .title }}
-              <h2 class="text-primary mb-3 text-2xl font-bold">{{ . }}</h2>
-            {{ end }}
+            <div class="mb-4 flex items-center gap-4">
+              {{ $colors := (slice "bg-green-800/50" "bg-yellow-800/50" "bg-red-800/50" "bg-purple-800/50") }}
+              <div class="{{ index $colors (mod $i 4) }} size-12 min-h-12 min-w-12 rounded-full"></div>
+              {{ with $useCase.title }}
+                <h2 class="text-primary text-2xl font-bold">{{ . }}</h2>
+              {{ end }}
+            </div>
             {{ with .organization }}
               <p class="text-secondary mb-4 font-bold">{{ . }}</p>
             {{ end }}
