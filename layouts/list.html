@@ -10,13 +10,15 @@
       <div class="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {{ range (.Paginate .RegularPages).Pages }}
           <a class="border-primary/25 h-full rounded border" href="{{ .Permalink }}">
-            <div class="aspect-video">
-              {{ with .Params.image }}
-                {{ partial "utilities/image" (dict "src" .) }}
-              {{ else }}
-                {{ partial "utilities/image" (dict "src" "images/services-web-development.png") }}
-              {{ end }}
-            </div>
+            {{ if ne .Section "posts" }}
+              <div class="aspect-video">
+                {{ with .Params.image }}
+                  {{ partial "utilities/image" (dict "src" .) }}
+                {{ else }}
+                  {{ partial "utilities/image" (dict "src" "images/services-web-development.png") }}
+                {{ end }}
+              </div>
+            {{ end }}
             <div class="p-6">
               <h5 class="text-primary mb-2 text-xl font-semibold">{{ .Title }}</h5>
               {{ if and (eq .Section "posts") (not .Date.IsZero) }}
