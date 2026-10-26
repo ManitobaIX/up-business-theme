@@ -46,7 +46,7 @@
     {{ end }}
 
     {{ with resources.Get "favicon-16x16.png" }}
-      <link rel="icon" type="image/png" sizes="16x16" href="" />
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ .Permalink }}" />
     {{ end }}
 
     {{ with resources.Get "site.webmanifest" }}
